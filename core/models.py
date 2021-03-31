@@ -3,21 +3,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import User
 
-CYCLE_CHOICES = [
-    ('daily', 'Daily'),
-    ('weekly', 'Weekly'),
-]
-
-TYPE_CHOICES = [
-    ('bi-time', 'Bi-time'),
-    ('tri-time', 'Tri-time'),
-    ('simple', 'Simple'),
-]
-
-UNIT_CHOICES = [
-    ('kwh', 'kwh'),
-    ('min', 'min'),
-]
+from patterns.choices import CYCLE_CHOICES, TYPE_CHOICES, UNIT_CHOICES
 
 
 class RegularPlan(models.Model):
