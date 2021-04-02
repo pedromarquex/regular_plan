@@ -1,7 +1,6 @@
 from rest_framework import routers
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from .api.viewsets import RegularPlanViewSet
 
 router = routers.DefaultRouter()
-
-router.register('auth/', TokenObtainPairView.as_view())
-router.register('auth/refresh/', TokenRefreshView.as_view())
+router.register('', RegularPlanViewSet, basename='RegularPlan')

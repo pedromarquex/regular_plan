@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import RegularPlan, MyUser
+from .models import MyUser
 
-admin.site.register(RegularPlan)
 admin.site.register(MyUser)

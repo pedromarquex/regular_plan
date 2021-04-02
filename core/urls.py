@@ -1,6 +1,8 @@
-from rest_framework import routers
+from django.urls import path
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from core.api.viewsets import RegularPlanViewSet
 
-router = routers.DefaultRouter()
-router.register('', RegularPlanViewSet, basename='RegularPlan')
+urlpatterns = [
+    path('auth/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]
