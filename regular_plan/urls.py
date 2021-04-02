@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from core.urls import router as core_router
 
 urlpatterns = [
+    path('auth/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('regular-plans', include(core_router.urls)),
     path('admin/', admin.site.urls),
 ]
