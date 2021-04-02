@@ -20,7 +20,7 @@ class RegularPlan(models.Model):
     valid = models.BooleanField()
     publish = models.BooleanField()
     vat = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])
-    owner = models.BooleanField(null=True, blank=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
