@@ -1,0 +1,59 @@
+[
+  {
+    "model": "plans.Plan",
+    "pk": "5ce7304d-5632-4e53-b233-d64284b66692",
+    "fields": {
+      "name": "First Plan",
+      "tar_included": true,
+      "subscription": 123123,
+      "cycle": "daily",
+      "type": "tri-time",
+      "offer_iva": true,
+      "off_peak_price": 12323,
+      "peak_price": 123123,
+      "unit": "kwh",
+      "valid": true,
+      "publish": true,
+      "vat": 100,
+      "owner": "1"
+      }
+  },
+  {
+    "model": "plans.Plan",
+    "pk": "9a765197-f6ab-47ad-bb04-6ec4f62acc9a",
+    "fields": {
+      "name": "Second Plan",
+      "tar_included": true,
+      "subscription": 123123,
+      "cycle": "weekly",
+      "type": "bi-time",
+      "offer_iva": true,
+      "off_peak_price": 12323,
+      "peak_price": 123123,
+      "unit": "min",
+      "valid": true,
+      "publish": true,
+      "vat": 10,
+      "owner": "1"
+      }
+  },
+    {
+    "model": "plans.Plan",
+    "pk": "4b47adc6-eed7-4b99-9f01-fbcf2cf59d23",
+    "fields": {
+      "name": "Another Plan",
+      "tar_included": true,
+      "subscription": 123123,
+      "cycle": "weekly",
+      "type": "bi-time",
+      "offer_iva": true,
+      "off_peak_price": 12323,
+      "peak_price": 123123,
+      "unit": "min",
+      "valid": true,
+      "publish": true,
+      "vat": 10,
+      "owner": "1"
+      }
+  }
+]

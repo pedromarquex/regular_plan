@@ -7,3 +7,4 @@ test:
 	python manage.py test
 seed:
 	python manage.py loaddata user.json
+	python manage.py loaddata plan.json
