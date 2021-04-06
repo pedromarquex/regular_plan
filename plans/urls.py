@@ -1,6 +1,6 @@
 from rest_framework import routers
 
-from .api.viewsets import RegularPlanViewSet
+from .api.viewsets import PlanViewSet
 
 router = routers.DefaultRouter()
-router.register('', RegularPlanViewSet, basename='RegularPlan')
+router.register('', PlanViewSet, basename='Plan')
