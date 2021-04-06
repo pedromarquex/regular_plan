@@ -7,7 +7,10 @@ from core.models import MyUser
 class DefaultUserSerializer(ModelSerializer):
     class Meta:
         model = User
-        fields = ['username']
+        fields = ['username', 'password']
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
 
 
 class UserSerializer(ModelSerializer):
