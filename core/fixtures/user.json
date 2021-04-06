@@ -1,0 +1,19 @@
+[
+  {
+    "model": "auth.User",
+    "pk": "1",
+    "fields": {
+        "username": "john",
+        "password": "john"
+      }
+  },
+  {
+    "model": "core.MyUser",
+    "pk": "55629091-24d7-4430-accf-155bcf437c4e",
+    "fields": {
+      "name": "John Lennon",
+      "user": "1",
+      "created_at": "2021-04-06 02:26:12.543742+00"
+    }
+  }
+]
