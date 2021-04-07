@@ -18,10 +18,11 @@ from django.urls import path
 from django.conf.urls import include
 
 from core import urls as core_urls
-from plans.urls import router as plans_router
+from plans.urls import plans_router, my_plans_router
 
 urlpatterns = [
     path('', include(core_urls)),
     path('plans/', include(plans_router.urls)),
+    path('my-plans/', include(my_plans_router.urls)),
     path('admin/', admin.site.urls),
 ]
