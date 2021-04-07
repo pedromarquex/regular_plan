@@ -14,3 +14,13 @@ class PlanViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Plan.objects.filter(publish=True)
+
+
+class MyPlanViewSet(ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = PlanSerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        return Plan.objects.filter(owner=self.request.user)
