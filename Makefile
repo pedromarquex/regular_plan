@@ -8,3 +8,5 @@ test:
 seed:
 	python manage.py loaddata user.json
 	python manage.py loaddata plan.json
+celery:
+	celery -A regular_plan worker -l info

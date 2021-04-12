@@ -1,6 +1,13 @@
 version: '3.1'
 
 services:
+  redis:
+    image: redis:alpine
+    volumes:
+      - /redis_data:/data/redis
+    restart: always
+    ports:
+      - 6379:6379
   db:
     image: postgres
     restart: always
@@ -14,3 +21,4 @@ services:
       - database-data:/var/lib/postgresql/data/
 volumes:
   database-data:
+  redis_data:
