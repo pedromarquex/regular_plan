@@ -6,6 +6,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from plans.models import Plan
 from .serializers import PlanSerializer
+from ..tasks import send_mail_task
 
 
 class PlanViewSet(ModelViewSet):
@@ -33,4 +34,6 @@ class MyPlanViewSet(ModelViewSet):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
+        if request.data['publish']:
+            send_mail_task.delay()
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
