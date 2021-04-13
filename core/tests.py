@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import MyUser
@@ -36,3 +37,30 @@ class UserTest(APITestCase):
 
         response = self.client.post(url, user_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_login(self):
+        """
+        ensure we can authenticate a user
+        """
+        url = '/auth/'
+        login_data = {
+            "username": "oatila",
+            "password": "atilahatescovid"
+        }
+        User.objects.create_user(**login_data)
+        response = self.client.post(url, login_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('access', response.data)
+        self.assertIn('refresh', response.data)
+
+    def test_fail_login(self):
+        """
+        ensure we can't authenticate a user that does not exists
+        """
+        url = '/auth/'
+        login_data = {
+            "username": "oatila",
+            "password": "atilahatescovid"
+        }
+        response = self.client.post(url, login_data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
