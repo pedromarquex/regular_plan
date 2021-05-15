@@ -5,12 +5,12 @@ services:
     image: redis:alpine
     volumes:
       - /redis_data:/data/redis
-    restart: always
+    restart: never
     ports:
       - 6379:6379
   db:
     image: postgres
-    restart: always
+    restart: never
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
