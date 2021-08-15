@@ -1,10 +1,12 @@
 from rest_framework import status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from plans.models import Plan
+from core.models import MyUser
 from .serializers import PlanSerializer
 from ..tasks import send_mail_task
 
@@ -17,6 +19,13 @@ class PlanViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Plan.objects.filter(publish=True)
+
+    @action(detail=True, methods=['get'])
+    def subscribe(self, request, pk):
+        user = MyUser.objects.get(user=request.user)
+        plan = Plan.objects.get(pk=pk)
+        user.plans.add(plan)
+        return Response(status=status.HTTP_200_OK)
 
 
 class MyPlanViewSet(ModelViewSet):
